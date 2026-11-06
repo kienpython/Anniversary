@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiệp mời kỷ niệm 7 tháng yêu nhau</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c2476b;
+    --rose-dark: #8e2a49;
+    --blush: #fbe4ea;
+    --cream: #fffaf6;
+    --gold: #b98a4a;
+    --ink: #4a2a35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    font-family: "Be Vietnam Pro", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 15% 20%, #ffd6e2 0, transparent 40%),
+      radial-gradient(circle at 85% 80%, #ffe9c9 0, transparent 40%),
+      linear-gradient(135deg, #fff0f4, #fdf3ec);
+    overflow-x: hidden;
+  }
+
+  /* Trái tim bay */
+  .hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .heart {
+    position: absolute;
+    bottom: -40px;
+    color: var(--rose);
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: .35; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 48px 36px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(142, 42, 73, .18);
+    animation: rise .9s ease both;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1.5px solid var(--gold);
+    border-radius: 16px;
+    pointer-events: none;
+    opacity: .7;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .kicker {
+    font-size: 12px;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .big-heart {
+    font-size: 44px;
+    color: var(--rose);
+    display: inline-block;
+    animation: beat 1.4s ease-in-out infinite;
+  }
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    15%      { transform: scale(1.18); }
+    30%      { transform: scale(1); }
+    45%      { transform: scale(1.12); }
+  }
+  h1 {
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 1.1;
+    color: var(--rose-dark);
+    margin: 6px 0 4px;
+  }
+  .subtitle {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--rose);
+    margin-bottom: 24px;
+  }
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--gold);
+    margin: 22px auto;
+    max-width: 260px;
+  }
+  .divider::before, .divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--gold); opacity: .6;
+  }
+  .invite-to {
+    font-size: 14px; color: #8a6672; margin-bottom: 6px;
+  }
+  .guest {
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--rose-dark);
+    margin-bottom: 18px;
+  }
+  .message {
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .counter {
+    display: inline-flex; gap: 10px; align-items: baseline;
+    margin: 26px 0 6px;
+  }
+  .counter .num {
+    font-family: "Playfair Display", serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: var(--rose);
+    line-height: 1;
+  }
+  .counter .unit {
+    font-size: 16px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+  }
+
+  .details {
+    background: var(--blush);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-top: 26px;
+    text-align: left;
+    display: grid;
+    gap: 14px;
+  }
+  .row { display: flex; gap: 14px; align-items: flex-start; }
+  .row .icon { font-size: 20px; line-height: 1.4; }
+  .row .label {
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold);
+  }
+  .row .value { font-size: 15.5px; font-weight: 500; line-height: 1.5; }
+
+  .btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 13px 30px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: #fff;
+    font: 500 15px "Be Vietnam Pro", sans-serif;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(194, 71, 107, .35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(194, 71, 107, .45); }
+  .reply {
+    margin-top: 16px;
+    min-height: 24px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    color: var(--rose-dark);
+  }
+  .signature {
+    margin-top: 26px;
+    font-family: "Great Vibes", cursive;
+    font-size: 30px;
+    color: var(--rose-dark);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 40px 22px 32px; }
+    h1 { font-size: 44px; }
+    .guest { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<main class="card">
+  <div class="kicker">Thiệp mời</div>
+  <div class="big-heart">♥</div>
+  <h1>Kỷ niệm yêu nhau</h1>
+  <div class="counter">
+    <span class="num">7</span><span class="unit">tháng</span>
+  </div>
+  <div class="subtitle">Một chặng đường nhỏ, rất nhiều điều ngọt ngào</div>
+
+  <div class="divider">✦</div>
+
+  <p class="invite-to">Trân trọng kính mời</p>
+  <!-- ⬇️ SỬA TÊN NGƯỜI ẤY Ở ĐÂY ⬇️ -->
+  <p class="guest" id="guest">Người thương của anh</p>
+
+  <p class="message" id="message">
+    Cảm ơn em đã đến, đã ở lại và cùng anh đi qua 7 tháng thật đẹp.
+    Anh muốn cùng em nhìn lại những kỷ niệm đã có
+    và hẹn nhau thêm thật nhiều điều đang chờ phía trước.
+  </p>
+
+  <div class="details">
+    <div class="row">
+      <span class="icon">📅</span>
+      <div>
+        <div class="label">Thời gian</div>
+        <!-- ⬇️ SỬA THỜI GIAN Ở ĐÂY ⬇️ -->
+        <div class="value" id="time">18:00, Thứ Bảy, ngày 07/11/2026</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="icon">📍</span>
+      <div>
+        <div class="label">Địa điểm</div>
+        <!-- ⬇️ SỬA ĐỊA CHỈ Ở ĐÂY ⬇️ -->
+        <div class="value" id="place">Veronia'Home</div>
+      </div>
+    </div>
+    <div class="row">
+      <span class="icon">👗</span>
+      <div>
+        <div class="label">Lưu ý nhỏ</div>
+        <!-- ⬇️ SỬA LƯU Ý (hoặc xóa cả khối này) ⬇️ -->
+        <div class="value" id="note">Chỉ cần mang theo nụ cười thật tươi.</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn" id="rsvp">Em sẽ đến 💌</button>
+  <div class="reply" id="reply"></div>
+
+  <div class="signature">Yêu em ♥</div>
+</main>
+
+<script>
+  // Tạo trái tim bay nền
+  const box = document.getElementById("hearts");
+  const symbols = ["♥", "♡", "❤"];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement("span");
+    h.className = "heart";
+    h.textContent = symbols[i % symbols.length];
+    h.style.left = Math.random() * 100 + "%";
+    h.style.fontSize = 14 + Math.random() * 22 + "px";
+    h.style.animationDuration = 9 + Math.random() * 10 + "s";
+    h.style.animationDelay = Math.random() * 12 + "s";
+    box.appendChild(h);
+  }
+
+  // Nút xác nhận
+  document.getElementById("rsvp").addEventListener("click", () => {
+    document.getElementById("reply").textContent = "Hẹn gặp em nhé, anh chờ em! ♥";
+    for (let i = 0; i < 14; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = "♥";
+      h.style.left = 30 + Math.random() * 40 + "%";
+      h.style.fontSize = 18 + Math.random() * 24 + "px";
+      h.style.animationDuration = 3 + Math.random() * 3 + "s";
+      h.style.animationDelay = Math.random() * 0.6 + "s";
+      box.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }
+  });
+</script>
+</body>
+</html>
